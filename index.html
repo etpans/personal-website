@@ -11,6 +11,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body class="text-base font-normal leading-7">
+    <!--
+      Design inspiration supplied by Evan:
+      https://www.paullarkin.info/ — simple personal introduction and project list.
+      https://msaktype.com/ — typography and straightforward content sections.
+      https://juanabrigo.com/ — small personal mark with a playful hover interaction.
+      Cow artwork from Julie's supplied hand-drawn cow reference.
+    -->
     <main class="mx-auto max-w-2xl px-[22px] py-16 sm:px-7 sm:py-24">
       <header>
         <a class="cow-mark" href="./" aria-label="Evan Tran home">
@@ -40,6 +47,8 @@
           <a href="https://github.com/etpans" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="https://www.linkedin.com/in/evan-thanh-tran/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="mailto:hello@evantran.ca">Email</a>
+          <!-- Add proper link to CV file -->
+          <!-- <a href="./Evan%20Tran%27s%20Resume.pdf" target="_blank" rel="noopener noreferrer">CV</a> -->
         </nav>
       </section>
 
@@ -47,6 +56,36 @@
         <h2 id="projects-heading" class="text-xl font-semibold">
           Projects
         </h2>
+        <ul class="mt-5 space-y-7">
+          <li>
+            <h3 class="text-lg font-semibold">
+              <a class="inline-link" href="https://www.troveclass.ca/" target="_blank" rel="noopener noreferrer">Trove</a>
+            </h3>
+            <p class="mt-1">
+              A classroom notes app that helps teachers keep class boards, student
+              notes, attachments, and shared updates in one place.
+            </p>
+            <p class="mt-2 text-sm">
+              <a class="inline-link" href="https://github.com/etpans/trove" target="_blank" rel="noopener noreferrer">Source code</a>
+            </p>
+          </li>
+          <li>
+            <h3 class="text-lg font-semibold">MyShell</h3>
+            <p class="mt-1">
+              A Unix-style shell built in C, with pipes, I/O redirection,
+              job control, and background process management.
+            </p>
+          </li>
+          <li>
+            <h3 class="text-lg font-semibold">
+              <a class="inline-link" href="https://github.com/etpans/deerhacks-2025" target="_blank" rel="noopener noreferrer">Unite</a>
+            </h3>
+            <p class="mt-1">
+              A campus event discovery app for UofT students, with an interactive
+              map. Built with React, Flask, and MySQL at DeerHacks 2025.
+            </p>
+          </li>
+        </ul>
       </section>
 
       <footer class="mt-12 border-t pt-5">
