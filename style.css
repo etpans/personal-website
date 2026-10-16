@@ -71,7 +71,9 @@ footer {
   border-color: var(--color-border);
 }
 
-.copyright {
+.copyright,
+.project-date,
+.project-note {
   color: var(--color-primary);
 }
 
