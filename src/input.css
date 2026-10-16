@@ -24,6 +24,22 @@ body {
   font-family: var(--font-body);
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.page-content {
+  flex: 1 0 auto;
+}
+
+main > footer {
+  flex-shrink: 0;
+}
+
 h1,
 h2,
 h3 {
