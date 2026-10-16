@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 28" width="40" height="28" shape-rendering="crispEdges">
+  <title>A little jumping cow</title>
+  <desc>A right-facing pixel-art cow with grey patches, a pink nose, little ears, and spread-out legs.</desc>
+  <defs>
+    <path id="cow-body" d="M5 13H8V12H23V10H25V7H27V5H28V2H30V5H33V3H35V6H37V9H38V15H36V17H33V19H34V21H36V23H38V25H36V26H33V24H30V22H25V23H23V25H21V26H18V24H17V22H13V23H11V25H9V27H6V26H5V23H3V21H2V17H3V15H5Z"/>
+    <clipPath id="cow-patches">
+      <use href="#cow-body"/>
+    </clipPath>
+  </defs>
+  <!-- Every edge follows the pixel grid; the head faces the jump direction. -->
+  <g stroke="#24252b" stroke-width="1" stroke-linejoin="miter">
+    <path fill="#95948e" d="M26 7H23V5H21V7H22V9H26Z"/>
+    <path fill="#95948e" d="M36 8H38V6H39V9H38V10H36Z"/>
+    <use href="#cow-body" fill="#f5f1e5"/>
+  </g>
+  <g clip-path="url(#cow-patches)" fill="#777873">
+    <path d="M33 5H36V7H38V12H34V11H32V7H33Z"/>
+    <path d="M9 13H17V14H21V17H19V19H14V18H11V16H9Z"/>
+    <path d="M3 17H6V19H8V22H6V24H3Z"/>
+    <path d="M24 17H28V18H30V21H28V22H25V20H24Z"/>
+    <path d="M15 21H20V23H18V24H15Z"/>
+  </g>
+  <!-- Two square eyes and a pink muzzle retain the reference's expression. -->
+  <g fill="#24252b">
+    <path d="M28 9H30V11H28Z M34 9H36V11H34Z"/>
+  </g>
+  <path fill="#24252b" d="M30 12H36V13H37V16H36V17H30V16H29V13H30Z"/>
+  <path fill="#dba8a2" d="M30 13H36V16H30Z"/>
+  <g fill="#393137">
+    <path d="M31 14H32V15H31Z M34 14H35V15H34Z"/>
+  </g>
+</svg>

@@ -4,7 +4,8 @@
   const wishPrompt = document.querySelector('.wish-prompt');
   const dialogue = document.querySelector('.wish-dialogue');
   const announcement = document.querySelector('.wish-announcement');
-  if (!layer || !wishButton || !wishPrompt || !dialogue || !announcement) return;
+  const cow = document.querySelector('.jumping-cow');
+  if (!layer || !wishButton || !wishPrompt || !dialogue || !announcement || !cow) return;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const svgNamespace = 'http://www.w3.org/2000/svg';
@@ -66,6 +67,7 @@
   function resetWish(restoreFocus = true) {
     window.clearTimeout(wishTimer);
     state = 'idle';
+    cow.classList.remove('is-jumping', 'is-still');
     dialogue.hidden = true;
     dialogue.textContent = '';
     announcement.textContent = '';
@@ -80,10 +82,40 @@
 
   function finishDialogue() {
     window.clearTimeout(wishTimer);
+    state = 'reading';
     dialogue.textContent = wish;
-    // The cow jump will go here in the next implementation step.
-    wishTimer = window.setTimeout(resetWish, 2800);
+    wishTimer = window.setTimeout(beginJump, 900);
   }
+
+  function finishJump() {
+    if (state !== 'jump') return;
+    window.clearTimeout(wishTimer);
+    state = 'pause';
+    cow.classList.remove('is-jumping', 'is-still');
+    announcement.textContent = 'Your wish came true! The cow jumped over the moon.';
+    wishTimer = window.setTimeout(resetWish, 1000);
+  }
+
+  function showStillCow() {
+    cow.classList.remove('is-jumping');
+    cow.classList.add('is-still');
+    window.clearTimeout(wishTimer);
+    wishTimer = window.setTimeout(finishJump, 1800);
+  }
+
+  function beginJump() {
+    state = 'jump';
+    announcement.textContent = 'A cow is jumping over the moon.';
+    if (reducedMotion.matches) {
+      showStillCow();
+    } else {
+      cow.classList.add('is-jumping');
+    }
+  }
+
+  cow.addEventListener('animationend', (event) => {
+    if (event.animationName === 'cow-jump') finishJump();
+  });
 
   function revealWish() {
     if (reducedMotion.matches || dialogue.textContent.length >= wish.length) {
@@ -110,6 +142,7 @@
   document.addEventListener('visibilitychange', restartStars);
   reducedMotion.addEventListener('change', () => {
     if (state === 'wish' && reducedMotion.matches) finishDialogue();
+    if (state === 'jump' && reducedMotion.matches) showStillCow();
     restartStars();
   });
   window.addEventListener('pagehide', () => {

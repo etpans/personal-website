@@ -15,13 +15,43 @@
   image-rendering: pixelated;
 }
 
-.shooting-star-layer {
+.shooting-star-layer,
+.cow-layer {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
   shape-rendering: crispEdges;
+}
+
+.jumping-cow {
+  opacity: 0;
+  image-rendering: pixelated;
+  transform-origin: 0 0;
+}
+
+.jumping-cow.is-jumping {
+  opacity: 1;
+  animation: cow-jump 3200ms linear both;
+}
+
+.jumping-cow.is-still {
+  opacity: 1;
+  animation: none;
+  transform: translate(160px, 24px);
+}
+
+@keyframes cow-jump {
+  0% { transform: translate(-28px, 138px) rotate(-18deg); }
+  12.5% { transform: translate(19px, 89px) rotate(-14deg); }
+  25% { transform: translate(66px, 53px) rotate(-10deg); }
+  37.5% { transform: translate(113px, 31px) rotate(-5deg); }
+  50% { transform: translate(160px, 24px) rotate(0deg); }
+  62.5% { transform: translate(207px, 31px) rotate(5deg); }
+  75% { transform: translate(254px, 53px) rotate(10deg); }
+  87.5% { transform: translate(301px, 89px) rotate(14deg); }
+  100% { transform: translate(348px, 138px) rotate(18deg); }
 }
 
 .shooting-star {
@@ -106,5 +136,10 @@
 
   .shooting-star {
     animation: none;
+  }
+
+  .jumping-cow.is-jumping {
+    animation: none;
+    transform: translate(160px, 24px);
   }
 }
