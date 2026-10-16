@@ -6,6 +6,7 @@
   --font-body: "Chivo Mono", monospace;
   --color-background: #15191f;
   --color-ink: #f1f5f9;
+  --color-body: #cbd5e1;
   --color-primary: #94a3b8;
   --color-accent: #bacde2;
   --color-surface: #1c222b;
@@ -14,12 +15,13 @@
 
 body {
   background-color: var(--color-background);
-  color: var(--color-ink);
+  color: var(--color-body);
   font-family: var(--font-body);
 }
 
 h1,
 h2 {
+  color: var(--color-ink);
   font-family: var(--font-heading);
 }
 
@@ -68,19 +70,27 @@ footer {
   border-color: var(--color-border);
 }
 
-footer a {
+.copyright {
+  color: var(--color-primary);
+}
+
+.contact-links a,
+.inline-link {
   color: var(--color-primary);
   font-size: 1rem;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
-footer a:hover,
-footer a:focus-visible {
+.contact-links a:hover,
+.contact-links a:focus-visible,
+.inline-link:hover,
+.inline-link:focus-visible {
   color: var(--color-accent);
 }
 
-footer a:focus-visible {
+.contact-links a:focus-visible,
+.inline-link:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 4px;
 }
