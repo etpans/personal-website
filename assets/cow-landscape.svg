@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" shape-rendering="crispEdges">
+  <title>Moonlit meadow</title>
+  <desc>A still, pixel-art landscape with scattered stars, a full moon, distant hills, and grass.</desc>
+
+  <!-- Flat bands of colour keep the sky deliberately low-resolution. -->
+  <g id="sky">
+    <path fill="#11172e" d="M0 0h320v180H0z"/>
+    <path fill="#17203b" d="M0 76h320v104H0z"/>
+    <path fill="#1e2a46" d="M0 112h320v68H0z"/>
+  </g>
+
+  <g id="stars" fill="#7588b2">
+    <path d="M17 24h1v1h-1z M41 59h1v1h-1z M62 15h1v1h-1z M82 43h1v1h-1z M103 77h1v1h-1z M119 22h1v1h-1z M141 12h1v1h-1z M186 19h1v1h-1z M212 69h1v1h-1z M232 15h1v1h-1z M254 49h1v1h-1z M285 18h1v1h-1z M304 67h1v1h-1z M22 91h1v1h-1z M71 101h1v1h-1z M127 95h1v1h-1z M194 100h1v1h-1z M268 91h1v1h-1z M299 105h1v1h-1z"/>
+  </g>
+  <g id="bright-stars" fill="#d6dfed">
+    <path d="M32 42h2v2h-2z M94 24h2v2h-2z M203 36h2v2h-2z M277 71h2v2h-2z M238 97h2v2h-2z"/>
+    <path d="M63 69h1v2h2v1h-2v2h-1v-2h-2v-1h2z M251 27h1v2h2v1h-2v2h-1v-2h-2v-1h2z"/>
+  </g>
+
+  <!-- The moon sits below the future jump's apex, leaving open sky above. -->
+  <g id="moon" transform="translate(136 46) scale(1.2)">
+    <path fill="#b5bdc9" d="M12 0h16v2h6v4h4v6h2v16h-2v6h-4v4h-6v2H12v-2H6v-4H2v-6H0V12h2V6h4V2h6z"/>
+    <path fill="#eee9ce" d="M12 0h14v2h6v4h4v6h2v14h-2v6h-4v4h-6v2H12v-2H6v-4H2v-6H0V12h2V6h4V2h6z"/>
+    <path fill="#fff6dc" d="M12 2h12v2H12z M6 6h6v2H6z M4 10h4v6H4z"/>
+    <path fill="#d1d0b9" d="M24 8h6v2h2v6h-2v2h-6v-2h-2v-6h2z M8 22h4v2h2v4h-2v2H8v-2H6v-4h2z M22 28h4v4h-4z"/>
+    <path fill="#bcbfac" d="M26 10h4v4h-4z M8 24h4v2H8z"/>
+  </g>
+
+  <g id="distant-hills" fill="#303854">
+    <path d="M0 132v-8h12v-4h12v-6h14v-4h20v4h14v4h12v8h18v6h18v4h16v44H0z"/>
+    <path d="M175 144v-8h15v-6h14v-8h14v-6h12v-4h18v4h14v6h12v4h16v-6h16v4h14v56H175z"/>
+  </g>
+  <g id="near-hills" fill="#263e49">
+    <path d="M0 146v-8h18v-4h20v4h20v4h24v6h24v4h24v28H0z"/>
+    <path d="M94 160v-8h20v-6h20v-6h18v-4h24v4h18v6h18v4h24v-6h18v-6h22v-4h22v4h22v42H94z"/>
+  </g>
+  <g id="meadow">
+    <path fill="#34534e" d="M0 157h30v2h32v2h34v2h40v-2h36v-2h44v-2h38v-2h38v2h28v23H0z"/>
+    <path fill="#1e383a" d="M0 165h32v2h38v2h62v-2h50v-2h42v-2h48v2h48v15H0z"/>
+    <path fill="#507061" d="M12 161h6v1h-6z M46 164h4v1h-4z M107 166h6v1h-6z M153 163h4v1h-4z M205 161h6v1h-6z M256 159h4v1h-4z M294 162h6v1h-6z"/>
+    <path fill="#3b5c51" d="M24 173v-3h1v2h2v-4h1v7h-1v-1h-3z M76 179v-4h1v2h2v-3h1v5z M177 175v-3h1v2h2v-5h1v7h-1v-1z M271 175v-5h1v3h2v-4h1v7h-1v-1z M306 180v-5h1v2h2v-4h1v7z"/>
+  </g>
+</svg>
