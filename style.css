@@ -77,7 +77,6 @@ footer {
 .contact-links a,
 .inline-link {
   color: var(--color-primary);
-  font-size: 1rem;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
