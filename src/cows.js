@@ -1,10 +1,18 @@
 (() => {
   const layer = document.querySelector('.shooting-star-layer');
-  if (!layer) return;
+  const wishButton = document.querySelector('.wish-button');
+  const wishPrompt = document.querySelector('.wish-prompt');
+  const dialogue = document.querySelector('.wish-dialogue');
+  const announcement = document.querySelector('.wish-announcement');
+  if (!layer || !wishButton || !wishPrompt || !dialogue || !announcement) return;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const svgNamespace = 'http://www.w3.org/2000/svg';
   let starTimer;
+  let wishTimer;
+  let state = 'idle';
+  let restoreButtonFocus = false;
+  const wish = 'I wish to see a cow jump over the moon.';
 
   function stopStars() {
     window.clearTimeout(starTimer);
@@ -12,7 +20,7 @@
   }
 
   function spawnStar() {
-    if (document.hidden || reducedMotion.matches) return;
+    if (state !== 'idle' || document.hidden || reducedMotion.matches) return;
 
     const position = document.createElementNS(svgNamespace, 'g');
     // Enter from beyond the top or left edge; the entire trail starts offscreen.
@@ -50,14 +58,66 @@
 
   function restartStars() {
     stopStars();
-    if (!document.hidden && !reducedMotion.matches) {
+    if (state === 'idle' && !document.hidden && !reducedMotion.matches) {
       starTimer = window.setTimeout(spawnStar, 900);
     }
   }
 
+  function resetWish(restoreFocus = true) {
+    window.clearTimeout(wishTimer);
+    state = 'idle';
+    dialogue.hidden = true;
+    dialogue.textContent = '';
+    announcement.textContent = '';
+    wishButton.hidden = false;
+    wishPrompt.hidden = false;
+    if (restoreFocus && restoreButtonFocus && document.activeElement === document.body) {
+      wishButton.focus({ preventScroll: true });
+    }
+    restoreButtonFocus = false;
+    restartStars();
+  }
+
+  function finishDialogue() {
+    window.clearTimeout(wishTimer);
+    dialogue.textContent = wish;
+    // The cow jump will go here in the next implementation step.
+    wishTimer = window.setTimeout(resetWish, 2800);
+  }
+
+  function revealWish() {
+    if (reducedMotion.matches || dialogue.textContent.length >= wish.length) {
+      finishDialogue();
+      return;
+    }
+    dialogue.textContent = wish.slice(0, dialogue.textContent.length + 1);
+    wishTimer = window.setTimeout(revealWish, 45);
+  }
+
+  wishButton.addEventListener('click', () => {
+    if (state !== 'idle') return;
+    state = 'wish';
+    restoreButtonFocus = document.activeElement === wishButton;
+    stopStars();
+    wishButton.hidden = true;
+    wishPrompt.hidden = true;
+    dialogue.hidden = false;
+    dialogue.textContent = '';
+    announcement.textContent = wish;
+    revealWish();
+  });
+
   document.addEventListener('visibilitychange', restartStars);
-  reducedMotion.addEventListener('change', restartStars);
-  window.addEventListener('pagehide', stopStars);
+  reducedMotion.addEventListener('change', () => {
+    if (state === 'wish' && reducedMotion.matches) finishDialogue();
+    restartStars();
+  });
+  window.addEventListener('pagehide', () => {
+    resetWish(false);
+    stopStars();
+  });
   window.addEventListener('pageshow', restartStars);
+  wishButton.hidden = false;
+  wishPrompt.hidden = false;
   restartStars();
 })();
