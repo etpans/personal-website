@@ -89,7 +89,20 @@ h3 {
 }
 
 footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
   border-color: var(--color-border);
+}
+
+.footer-source {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--color-primary);
 }
 
 .copyright,
@@ -107,12 +120,15 @@ footer {
 
 .contact-links a:hover,
 .contact-links a:focus-visible,
+.footer-source:hover,
+.footer-source:focus-visible,
 .inline-link:hover,
 .inline-link:focus-visible {
   color: var(--color-accent);
 }
 
 .contact-links a:focus-visible,
+.footer-source:focus-visible,
 .inline-link:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 4px;
