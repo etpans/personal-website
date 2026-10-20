@@ -21,3 +21,8 @@ npm run build
 ```
 
 Edit shared styles in `src/input.css`; the build generates `style.css`.
+
+All pages follow the browser's system appearance preference using CSS
+`prefers-color-scheme`, with a light default and a dark palette when requested.
+Changes to the preference apply automatically. Cow-page controls share the theme;
+the moon landscape retains its night-time artwork.
